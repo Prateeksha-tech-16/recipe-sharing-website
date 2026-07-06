@@ -13,6 +13,13 @@ A recipe sharing website where users can create, share, and discover recipes.
 - User profile
 - Favorite recipes
 
+## Latest Update
+- Added About Page
+- Added Contact Page
+- Added Search Functionality
+- Added Category Filters
+- Updated Navbar
+
 ## Tech Stack
 
 - React
@@ -26,6 +33,7 @@ A recipe sharing website where users can create, share, and discover recipes.
 ## Project Status
 
 🚧 Currently under development
+
 
 ## Author
 
