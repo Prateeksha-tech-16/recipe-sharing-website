@@ -1,115 +1,83 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
+  const linkStyle = ({ isActive }) => ({
+    color: "white",
+    textDecoration: "none",
+    fontWeight: "600",
+    padding: "10px 18px",
+    borderRadius: "10px",
+    backgroundColor: isActive
+      ? "rgba(255,255,255,0.25)"
+      : "transparent",
+    transition: "0.3s ease",
+  });
+
   return (
     <nav
       style={{
-        background: "linear-gradient(90deg, #ff6b35, #ff914d)",
-        padding: "15px 30px",
+        background: "linear-gradient(90deg,#ff6b35,#ff914d)",
+        padding: "15px 35px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         flexWrap: "wrap",
         position: "sticky",
-        top: "0",
-        zIndex: "1000",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+        top: 0,
+        zIndex: 1000,
+        boxShadow: "0 4px 15px rgba(0,0,0,.25)",
       }}
     >
-      {/* Website Logo */}
+      {/* Logo */}
+
       <h2
         style={{
           color: "white",
           margin: 0,
+          fontWeight: "700",
+          letterSpacing: "1px",
         }}
       >
         🍽 RecipeShare
       </h2>
 
-      {/* Navigation Links */}
+      {/* Navigation */}
+
       <div
         style={{
           display: "flex",
-          gap: "20px",
+          gap: "12px",
           flexWrap: "wrap",
+          alignItems: "center",
         }}
       >
-        <Link
-          to="/"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/" style={linkStyle}>
           Home
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/about"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/about" style={linkStyle}>
           About
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/contact"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/contact" style={linkStyle}>
           Contact
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/add"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/add" style={linkStyle}>
           Add Recipe
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/profile"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/profile" style={linkStyle}>
           Profile
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/login"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/login" style={linkStyle}>
           Login
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/register"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
+        <NavLink to="/register" style={linkStyle}>
           Register
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );
