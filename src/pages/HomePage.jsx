@@ -49,6 +49,13 @@ function HomePage() {
         </p>
 
         <button
+          onClick={() => {
+            document
+              .getElementById("recipes")
+              .scrollIntoView({
+                behavior: "smooth",
+              });
+          }}
           style={{
             padding: "15px 35px",
             border: "none",
@@ -57,6 +64,7 @@ function HomePage() {
             color: "#ff5e62",
             fontWeight: "bold",
             cursor: "pointer",
+            fontSize: "16px",
           }}
         >
           🍴 Explore Recipes
@@ -67,7 +75,7 @@ function HomePage() {
       <div
         style={{
           textAlign: "center",
-          marginBottom: "20px",
+          marginBottom: "25px",
         }}
       >
         <input
@@ -76,10 +84,13 @@ function HomePage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
-            width: "320px",
-            padding: "10px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
+            width: "380px",
+            padding: "14px",
+            borderRadius: "30px",
+            border: "1px solid #ddd",
+            outline: "none",
+            boxShadow: "0 3px 10px rgba(0,0,0,.12)",
+            fontSize: "16px",
           }}
         />
       </div>
@@ -91,38 +102,37 @@ function HomePage() {
           justifyContent: "center",
           gap: "10px",
           flexWrap: "wrap",
-          marginBottom: "30px",
+          marginBottom: "40px",
         }}
       >
-        <button onClick={() => setCategory("All")}>All</button>
-
-        <button onClick={() => setCategory("Pizza")}>
-          🍕 Pizza
-        </button>
-
-        <button onClick={() => setCategory("Pasta")}>
-          🍝 Pasta
-        </button>
-
-        <button onClick={() => setCategory("Dessert")}>
-          🍰 Desserts
-        </button>
-
-        <button onClick={() => setCategory("Indian")}>
-          🍛 Indian
-        </button>
-
-        <button onClick={() => setCategory("Fast Food")}>
-          🍔 Fast Food
-        </button>
-
-        <button onClick={() => setCategory("Salad")}>
-          🥗 Salads
-        </button>
-
-        <button onClick={() => setCategory("Asian")}>
-          🍜 Asian
-        </button>
+        {[
+          "All",
+          "Pizza",
+          "Pasta",
+          "Dessert",
+          "Indian",
+          "Fast Food",
+          "Salad",
+          "Asian",
+        ].map((item) => (
+          <button
+            key={item}
+            onClick={() => setCategory(item)}
+            style={{
+              padding: "10px 18px",
+              borderRadius: "25px",
+              border: "none",
+              cursor: "pointer",
+              fontWeight: "bold",
+              backgroundColor:
+                category === item ? "#ff6b35" : "#f2f2f2",
+              color:
+                category === item ? "white" : "black",
+            }}
+          >
+            {item}
+          </button>
+        ))}
       </div>
 
       {/* Statistics */}
@@ -130,82 +140,98 @@ function HomePage() {
         style={{
           display: "flex",
           justifyContent: "space-around",
+          gap: "20px",
           flexWrap: "wrap",
-          textAlign: "center",
-          margin: "40px 0",
+          marginBottom: "50px",
         }}
       >
-        <div>
-          <h2>20+</h2>
-          <p>Recipes</p>
-        </div>
+        {[
+          { number: "20+", title: "Recipes" },
+          { number: "8", title: "Categories" },
+          { number: "★★★★★", title: "Top Rated" },
+          { number: "100%", title: "Homemade" },
+        ].map((item, index) => (
+          <div
+            key={index}
+            style={{
+              background: "white",
+              width: "180px",
+              padding: "25px",
+              borderRadius: "15px",
+              textAlign: "center",
+              boxShadow:
+                "0 6px 18px rgba(0,0,0,.12)",
+            }}
+          >
+            <h2 style={{ color: "#ff6b35" }}>
+              {item.number}
+            </h2>
 
-        <div>
-          <h2>8</h2>
-          <p>Categories</p>
-        </div>
-
-        <div>
-          <h2>★★★★★</h2>
-          <p>Top Rated</p>
-        </div>
-
-        <div>
-          <h2>100%</h2>
-          <p>Homemade</p>
-        </div>
-      </div>
-
-      {/* Trending Recipes */}
-      <h2
-        style={{
-          color: "#ff5e62",
-          marginBottom: "20px",
-        }}
-      >
-        🔥 Trending Recipes
-      </h2>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginBottom: "40px",
-        }}
-      >
-        {recipes.slice(0, 4).map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            recipe={recipe}
-          />
+            <p>{item.title}</p>
+          </div>
         ))}
       </div>
 
-      {/* All Recipes */}
-      <h2
-        style={{
-          marginBottom: "20px",
-        }}
-      >
-        🍽 All Recipes
-      </h2>
+      <div id="recipes">
+        {/* Trending */}
+        <h2 style={{ color: "#ff5e62" }}>
+          🔥 Trending Recipes
+        </h2>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-        }}
-      >
-        {filteredRecipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            recipe={recipe}
-          />
-        ))}
+        <p
+          style={{
+            color: "#666",
+            marginBottom: "25px",
+          }}
+        >
+          Most loved recipes from our collection.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(250px,1fr))",
+            gap: "20px",
+            marginBottom: "50px",
+          }}
+        >
+          {recipes.slice(0, 4).map((recipe) => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+            />
+          ))}
+        </div>
+
+        {/* All Recipes */}
+        <h2>🍽 All Recipes</h2>
+
+        <p
+          style={{
+            color: "#666",
+            marginBottom: "25px",
+          }}
+        >
+          Browse every delicious recipe available on
+          RecipeShare.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(250px,1fr))",
+            gap: "20px",
+          }}
+        >
+          {filteredRecipes.map((recipe) => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
