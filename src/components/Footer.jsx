@@ -4,20 +4,59 @@ function Footer() {
       style={{
         backgroundColor: "#222",
         color: "white",
-        textAlign: "center",
-        padding: "25px",
-        marginTop: "40px",
+        padding: "40px 20px",
+        marginTop: "50px",
       }}
     >
-      <h2>🍽 Recipe Sharing Website</h2>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexWrap: "wrap",
+          gap: "30px",
+        }}
+      >
+        {/* Website */}
+        <div>
+          <h2>🍽 Recipe Sharing Website</h2>
+          <p>
+            Discover delicious recipes from around the world.
+          </p>
+        </div>
 
-      <p>Cook • Share • Inspire</p>
+        {/* Quick Links */}
+        <div>
+          <h3>Quick Links</h3>
 
-      <hr />
+          <p>🏠 Home</p>
+          <p>ℹ About</p>
+          <p>📞 Contact</p>
+          <p>➕ Add Recipe</p>
+        </div>
 
-      <p>Email: support@recipesharing.com</p>
+        {/* Contact */}
+        <div>
+          <h3>Contact</h3>
 
-      <p>© 2025 Pratiksha. All Rights Reserved.</p>
+          <p>📧 recipe@gmail.com</p>
+          <p>📱 +91 9876543210</p>
+        </div>
+
+        {/* Social */}
+        <div>
+          <h3>Follow Us</h3>
+
+          <p>📘 Facebook</p>
+          <p>📷 Instagram</p>
+          <p>🐦 Twitter</p>
+        </div>
+      </div>
+
+      <hr style={{ margin: "30px 0" }} />
+
+      <p style={{ textAlign: "center" }}>
+        © 2026 Recipe Sharing Website. All Rights Reserved.
+      </p>
     </footer>
   );
 }

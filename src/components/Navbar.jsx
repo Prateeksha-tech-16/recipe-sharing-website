@@ -4,61 +4,113 @@ function Navbar() {
   return (
     <nav
       style={{
-        backgroundColor: "#ff6b35",
-        padding: "15px",
+        background: "linear-gradient(90deg, #ff6b35, #ff914d)",
+        padding: "15px 30px",
         display: "flex",
-        justifyContent: "center",
-        gap: "20px",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexWrap: "wrap",
+        position: "sticky",
+        top: "0",
+        zIndex: "1000",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
       }}
     >
-      <Link
-        to="/"
-        style={{ color: "white", textDecoration: "none" }}
+      {/* Website Logo */}
+      <h2
+        style={{
+          color: "white",
+          margin: 0,
+        }}
       >
-        Home
-      </Link>
+        🍽 RecipeShare
+      </h2>
 
-      <Link
-        to="/about"
-        style={{ color: "white", textDecoration: "none" }}
+      {/* Navigation Links */}
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          flexWrap: "wrap",
+        }}
       >
-        About
-      </Link>
+        <Link
+          to="/"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Home
+        </Link>
 
-      <Link
-        to="/contact"
-        style={{ color: "white", textDecoration: "none" }}
-      >
-        Contact
-      </Link>
+        <Link
+          to="/about"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          About
+        </Link>
 
-      <Link
-        to="/login"
-        style={{ color: "white", textDecoration: "none" }}
-      >
-        Login
-      </Link>
+        <Link
+          to="/contact"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Contact
+        </Link>
 
-      <Link
-        to="/register"
-        style={{ color: "white", textDecoration: "none" }}
-      >
-        Register
-      </Link>
+        <Link
+          to="/add"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Add Recipe
+        </Link>
 
-      <Link
-        to="/add"
-        style={{ color: "white", textDecoration: "none" }}
-      >
-        Add Recipe
-      </Link>
+        <Link
+          to="/profile"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Profile
+        </Link>
 
-      <Link
-        to="/profile"
-        style={{ color: "white", textDecoration: "none" }}
-      >
-        Profile
-      </Link>
+        <Link
+          to="/login"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Login
+        </Link>
+
+        <Link
+          to="/register"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          Register
+        </Link>
+      </div>
     </nav>
   );
 }

@@ -5,32 +5,56 @@ function ContactPage() {
         maxWidth: "700px",
         margin: "40px auto",
         padding: "20px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
       }}
     >
       <h1>📞 Contact Us</h1>
 
       <p>
-        We'd love to hear your feedback, suggestions, and recipe ideas!
+        We'd love to hear from you!
       </p>
 
-      <hr />
+      <input
+        type="text"
+        placeholder="Your Name"
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginBottom: "15px",
+        }}
+      />
 
-      <h3>📧 Email</h3>
-      <p>support@recipesharing.com</p>
+      <input
+        type="email"
+        placeholder="Your Email"
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginBottom: "15px",
+        }}
+      />
 
-      <h3>📱 Phone</h3>
-      <p>+91 XXXXX XXXXX</p>
+      <textarea
+        placeholder="Write your message..."
+        rows="6"
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginBottom: "15px",
+        }}
+      ></textarea>
 
-      <h3>📍 Address</h3>
-      <p>New Delhi, India</p>
-
-      <h3>🌐 Follow Us</h3>
-      <p>Instagram: @recipesharing</p>
-      <p>Facebook: Recipe Sharing Website</p>
-      <p>Twitter: @recipeshare</p>
+      <button
+        style={{
+          padding: "12px 25px",
+          background: "#ff6b35",
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+        }}
+      >
+        Send Message
+      </button>
     </div>
   );
 }
