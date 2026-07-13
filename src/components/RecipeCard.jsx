@@ -5,6 +5,10 @@ function RecipeCard({ recipe }) {
   const [favorite, setFavorite] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  if (!recipe) {
+    return null;
+  }
+
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
@@ -39,30 +43,33 @@ function RecipeCard({ recipe }) {
         🔥 Popular
       </div>
 
-      {/* Image */}
+      {/* Recipe Image */}
       <img
-        src={recipe.image}
-        alt={recipe.title}
-        style={{
-          width: "100%",
-          height: "220px",
-          objectFit: "cover",
-          borderRadius: "12px",
-          transition: "0.35s",
-          transform: isHovered ? "scale(1.06)" : "scale(1)",
-        }}
-      />
+  src={recipe.image}
+  alt={recipe.title}
+  onError={(e) => {
+    e.target.src = "https://via.placeholder.com/400x250?text=Recipe";
+  }}
+  style={{
+    width: "100%",
+    height: "220px",
+    objectFit: "cover",
+    borderRadius: "12px",
+    transition: "0.35s",
+    transform: isHovered ? "scale(1.05)" : "scale(1)",
+  }}
+/>
 
       {/* Recipe Name */}
       <h2
         style={{
-          color: "#222222",
-          fontSize: "26px",
+          color: "#1f2937",
+          fontSize: "24px",
           fontWeight: "700",
           marginTop: "18px",
           marginBottom: "15px",
-          lineHeight: "1.3",
-          minHeight: "68px",
+          lineHeight: "1.4",
+          minHeight: "65px",
         }}
       >
         {recipe.title}
@@ -72,47 +79,43 @@ function RecipeCard({ recipe }) {
       <p
         style={{
           color: "#555",
-          fontSize: "18px",
           margin: "8px 0",
         }}
       >
-        ⭐ {recipe.rating} / 5
+        ⭐ {recipe.rating || "4.5 / 5"}
       </p>
 
       {/* Category */}
       <p
         style={{
           color: "#555",
-          fontSize: "18px",
           margin: "8px 0",
         }}
       >
-        📂 {recipe.category}
+        📂 {recipe.category || "General"}
       </p>
 
       {/* Time */}
       <p
         style={{
           color: "#555",
-          fontSize: "18px",
           margin: "8px 0",
         }}
       >
-        ⏱ {recipe.time}
+        ⏱ {recipe.time || "30 mins"}
       </p>
 
       {/* Difficulty */}
       <p
         style={{
           color: "#555",
-          fontSize: "18px",
           margin: "8px 0 18px",
         }}
       >
-        👨‍🍳 Difficulty: {recipe.difficulty}
+        👨‍🍳 {recipe.difficulty || "Easy"}
       </p>
 
-      {/* Favourite Button */}
+      {/* Favourite */}
       <button
         onClick={() => setFavorite(!favorite)}
         style={{
@@ -121,14 +124,18 @@ function RecipeCard({ recipe }) {
           fontSize: "30px",
           cursor: "pointer",
           marginBottom: "18px",
-          transition: "0.3s",
         }}
       >
         {favorite ? "❤️" : "🤍"}
       </button>
 
-      {/* View Button */}
-      <Link to={`/recipe/${recipe.id}`}>
+      {/* View Recipe */}
+      <Link
+        to={`/recipe/${recipe.id}`}
+        style={{
+          textDecoration: "none",
+        }}
+      >
         <button
           style={{
             width: "100%",
@@ -138,9 +145,8 @@ function RecipeCard({ recipe }) {
             border: "none",
             borderRadius: "10px",
             cursor: "pointer",
-            fontSize: "17px",
+            fontSize: "16px",
             fontWeight: "bold",
-            transition: "0.3s",
           }}
         >
           📖 View Full Recipe

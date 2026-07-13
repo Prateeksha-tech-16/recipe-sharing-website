@@ -18,30 +18,68 @@ function HomePage() {
   });
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div
+  style={{
+    padding: "30px 20px",
+    background: "#f8f9fc",
+    minHeight: "100vh",
+    maxWidth: "1400px",
+    margin: "0 auto",
+  }}
+>
+   
       {/* Website Title */}
-      <h1 style={{ textAlign: "center" }}>
-        🍽 Recipe Sharing Website
-      </h1>
+
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <h1
+          style={{
+            fontSize: "48px",
+            color: "#ff6b35",
+            marginBottom: "10px",
+          }}
+        >
+          🍽 Recipe Sharing Website
+        </h1>
+
+        <p
+          style={{
+            color: "#666",
+            fontSize: "18px",
+          }}
+        >
+          Discover • Cook • Share • Enjoy
+        </p>
+      </div>
 
       {/* Hero Banner */}
+
       <div
         style={{
           background: "linear-gradient(135deg,#ff9966,#ff5e62)",
           color: "white",
-          padding: "60px 20px",
-          borderRadius: "15px",
+          padding: "90px 30px",
+          borderRadius: "25px",
           textAlign: "center",
-          margin: "30px 0",
+          margin: "40px auto",
+          maxWidth: "1300px",
+          boxShadow: "0 10px 30px rgba(0,0,0,.15)",
         }}
       >
-        <h1>🍽 Discover Delicious Recipes</h1>
+        <h1
+          style={{
+            fontSize: "52px",
+            marginBottom: "20px",
+          }}
+        >
+          🍽 Discover Delicious Recipes
+        </h1>
 
         <p
           style={{
-            fontSize: "18px",
-            maxWidth: "700px",
+            fontSize: "20px",
+            maxWidth: "750px",
             margin: "20px auto",
+            lineHeight: "1.8",
           }}
         >
           Explore delicious recipes from around the world.
@@ -59,12 +97,13 @@ function HomePage() {
           style={{
             padding: "15px 35px",
             border: "none",
-            borderRadius: "8px",
+            borderRadius: "10px",
             background: "white",
             color: "#ff5e62",
             fontWeight: "bold",
             cursor: "pointer",
-            fontSize: "16px",
+            fontSize: "17px",
+            transition: "0.3s",
           }}
         >
           🍴 Explore Recipes
@@ -72,10 +111,11 @@ function HomePage() {
       </div>
 
       {/* Search */}
+
       <div
         style={{
           textAlign: "center",
-          marginBottom: "25px",
+          marginBottom: "30px",
         }}
       >
         <input
@@ -84,25 +124,27 @@ function HomePage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
-            width: "380px",
-            padding: "14px",
+            width: "450px",
+            maxWidth: "95%",
+            padding: "15px",
             borderRadius: "30px",
             border: "1px solid #ddd",
             outline: "none",
-            boxShadow: "0 3px 10px rgba(0,0,0,.12)",
+            boxShadow: "0 5px 15px rgba(0,0,0,.1)",
             fontSize: "16px",
           }}
         />
       </div>
 
       {/* Category Buttons */}
+
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          gap: "10px",
+          gap: "12px",
           flexWrap: "wrap",
-          marginBottom: "40px",
+          marginBottom: "50px",
         }}
       >
         {[
@@ -119,15 +161,15 @@ function HomePage() {
             key={item}
             onClick={() => setCategory(item)}
             style={{
-              padding: "10px 18px",
+              padding: "12px 20px",
               borderRadius: "25px",
               border: "none",
               cursor: "pointer",
               fontWeight: "bold",
               backgroundColor:
-                category === item ? "#ff6b35" : "#f2f2f2",
+                category === item ? "#ff6b35" : "#ececec",
               color:
-                category === item ? "white" : "black",
+                category === item ? "white" : "#333",
             }}
           >
             {item}
@@ -135,16 +177,62 @@ function HomePage() {
         ))}
       </div>
 
-      {/* Statistics */}
+      {/* Featured Categories */}
+
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
-          gap: "20px",
           flexWrap: "wrap",
-          marginBottom: "50px",
+          gap: "20px",
+          marginBottom: "60px",
         }}
       >
+        {[
+          "🍕 Pizza",
+          "🍜 Asian",
+          "🍛 Indian",
+          "🍰 Desserts",
+        ].map((item) => (
+          <div
+            key={item}
+            style={{
+              background: "white",
+              width: "220px",
+              padding: "25px",
+              borderRadius: "15px",
+              textAlign: "center",
+              boxShadow:
+                "0 6px 18px rgba(0,0,0,.08)",
+            }}
+          >
+                <h3
+  style={{
+    color: "#ff6b35",
+    fontSize: "24px",
+    marginTop: "10px",
+    marginBottom: "10px",
+  }}
+>
+                {item}
+                </h3> 
+          </div>
+        ))}
+      </div>
+
+      {/* Statistics */}
+
+     <div
+  style={{
+    display: "flex",
+    justifyContent: "space-around",
+    gap: "20px",
+    flexWrap: "wrap",
+    marginBottom: "60px",
+    transition: "0.3s",
+    cursor: "pointer",
+  }}
+>
         {[
           { number: "20+", title: "Recipes" },
           { number: "8", title: "Categories" },
@@ -163,7 +251,14 @@ function HomePage() {
                 "0 6px 18px rgba(0,0,0,.12)",
             }}
           >
-            <h2 style={{ color: "#ff6b35" }}>
+            <h2
+           style={{
+            color: "#ff5e62",
+           fontSize: "38px",
+           textAlign: "center",
+           marginBottom: "15px",
+            }}
+          >
               {item.number}
             </h2>
 
@@ -171,9 +266,7 @@ function HomePage() {
           </div>
         ))}
       </div>
-
       <div id="recipes">
-        {/* Trending */}
         <h2 style={{ color: "#ff5e62" }}>
           🔥 Trending Recipes
         </h2>
@@ -193,7 +286,7 @@ function HomePage() {
             gridTemplateColumns:
               "repeat(auto-fit,minmax(250px,1fr))",
             gap: "20px",
-            marginBottom: "50px",
+            marginBottom: "60px",
           }}
         >
           {recipes.slice(0, 4).map((recipe) => (
@@ -204,8 +297,16 @@ function HomePage() {
           ))}
         </div>
 
-        {/* All Recipes */}
-        <h2>🍽 All Recipes</h2>
+        <h2
+  style={{
+    textAlign: "center",
+    color: "#ff6b35",
+    fontSize: "38px",
+    marginTop: "20px",
+  }}
+>
+  🍽 All Recipes
+</h2>
 
         <p
           style={{
@@ -217,22 +318,126 @@ function HomePage() {
           RecipeShare.
         </p>
 
+        {filteredRecipes.length === 0 ? (
+          <div
+            style={{
+              textAlign: "center",
+              padding: "60px",
+              color: "#666",
+            }}
+          >
+            <h2>No recipes found 😔</h2>
+
+            <p>
+              Try another search or category.
+            </p>
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(250px,1fr))",
+              gap: "20px",
+            }}
+          >
+            {filteredRecipes.map((recipe) => (
+              <RecipeCard
+                key={recipe.id}
+                recipe={recipe}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Why Choose RecipeShare */}
+
+      <div
+        style={{
+          marginTop: "80px",
+          textAlign: "center",
+        }}
+      >
+        <h2
+          style={{
+            color: "#ff6b35",
+            marginBottom: "40px",
+          }}
+        >
+          ⭐ Why Choose RecipeShare?
+        </h2>
+
         <div
           style={{
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "20px",
+            gap: "25px",
           }}
         >
-          {filteredRecipes.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              recipe={recipe}
-            />
+          {[
+            {
+              icon: "🍳",
+              title: "Easy Cooking",
+              text: "Simple recipes anyone can follow.",
+            },
+            {
+              icon: "🌎",
+              title: "Worldwide Recipes",
+              text: "Explore food from every culture.",
+            },
+            {
+              icon: "❤️",
+              title: "Loved by Foodies",
+              text: "Join thousands of recipe lovers.",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              style={{
+                background: "white",
+                padding: "30px",
+                borderRadius: "15px",
+                boxShadow:
+                  "0 6px 18px rgba(0,0,0,.1)",
+              }}
+            >
+              <div style={{ fontSize: "50px" }}>
+                {item.icon}
+              </div>
+
+              <h3
+             style={{
+             color: "#ff6b35",
+             marginTop: "15px",
+              }}
+            >
+             {item.title}
+             </h3>
+
+              <p
+                style={{
+                  color: "#666",
+                }}
+              >
+                {item.text}
+              </p>
+            </div>
           ))}
         </div>
       </div>
+      <div
+  style={{
+    marginTop: "90px",
+    textAlign: "center",
+    color: "#777",
+    fontStyle: "italic",
+    fontSize: "18px",
+  }}
+>
+  ❤️ Cooking brings people together. Share every recipe with love.
+</div>
     </div>
   );
 }
