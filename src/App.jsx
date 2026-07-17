@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import AddRecipe from "./pages/AddRecipe";
 import ProfilePage from "./pages/ProfilePage";
 import RecipeDetails from "./pages/RecipeDetails";
+import FavoritesPage from "./pages/FavoritesPage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/add" element={<AddRecipe />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
           </Routes>
         </main>
 

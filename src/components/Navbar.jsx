@@ -47,7 +47,6 @@ function Navbar() {
       }}
     >
       {/* Logo */}
-
       <NavLink
         to="/"
         style={{
@@ -68,7 +67,6 @@ function Navbar() {
       </NavLink>
 
       {/* Navigation */}
-
       <div
         style={{
           display: "flex",
@@ -120,6 +118,15 @@ function Navbar() {
           onMouseLeave={handleMouseLeave}
         >
           Profile
+        </NavLink>
+
+        <NavLink
+          to="/favorites"
+          style={linkStyle}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          ❤️ Favorites
         </NavLink>
 
         <NavLink
