@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
 
 function RecipeCard({ recipe }) {
-  const [favorite, setFavorite] = useState(false);
+ const {
+  addFavorite,
+  removeFavorite,
+  isFavorite,
+} = useFavorites();
+
+const favorite = isFavorite(recipe.id);
   const [isHovered, setIsHovered] = useState(false);
 
   if (!recipe) {
@@ -117,7 +124,13 @@ function RecipeCard({ recipe }) {
 
       {/* Favourite */}
       <button
-        onClick={() => setFavorite(!favorite)}
+        onClick={() => {
+  if (favorite) {
+    removeFavorite(recipe.id);
+  } else {
+    addFavorite(recipe);
+  }
+}}
         style={{
           border: "none",
           background: "none",
