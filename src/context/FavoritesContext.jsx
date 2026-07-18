@@ -1,25 +1,34 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const FavoritesContext = createContext();
+const FavoritesContext = createContext();
 
-function FavoritesProvider({ children }) {
+export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
 
-  const toggleFavorite = (recipe) => {
-    const exists = favorites.find((item) => item.id === recipe.id);
+  const addFavorite = (recipe) => {
+    setFavorites((currentFavorites) => [
+      ...currentFavorites,
+      recipe,
+    ]);
+  };
 
-    if (exists) {
-      setFavorites(favorites.filter((item) => item.id !== recipe.id));
-    } else {
-      setFavorites([...favorites, recipe]);
-    }
+  const removeFavorite = (recipeId) => {
+    setFavorites((currentFavorites) =>
+      currentFavorites.filter((recipe) => recipe.id !== recipeId)
+    );
+  };
+
+  const isFavorite = (recipeId) => {
+    return favorites.some((recipe) => recipe.id === recipeId);
   };
 
   return (
     <FavoritesContext.Provider
       value={{
         favorites,
-        toggleFavorite,
+        addFavorite,
+        removeFavorite,
+        isFavorite,
       }}
     >
       {children}
@@ -27,4 +36,6 @@ function FavoritesProvider({ children }) {
   );
 }
 
-export default FavoritesProvider;
+export function useFavorites() {
+  return useContext(FavoritesContext);
+}
